@@ -22,9 +22,35 @@ Install the package with Composer:
 
     composer require sirmathays/convenient-laravel-macros
 
+The package registers itself automatically.
+
 ## Macros
 
 Here's a brief documentation on the macros the package provides.
+
+- `Illuminate\Database\Eloquent\Builder`
+  - `selectKey`
+  - `whereLike` & `orWhereLike`
+- `Illuminate\Database\Query\Builder`
+  - `selectRawArr`
+- `Illuminate\Support\Collection`
+  - `mergeMany`
+  - `pluckMany`
+  - `whereExtends`
+  - `whereImplements`
+  - `whereUses`
+- `Illuminate\Support\Arr`
+  - `combine`
+  - `join`
+  - `undot`
+  - `zip`
+  - `unzip`
+- `Illuminate\Support\Str`
+  - `wrap`
+- `Illuminate\Support\Stringable`
+  - `wrap`
+- `Carbon\CarbonPeriod`
+  - `collect`
 
 ### `Illuminate\Database\Eloquent\Builder::selectKey`
 
