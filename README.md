@@ -120,7 +120,7 @@ Filter classes and/or objects that extend the given class.
 ```php
 use Illuminate\Database\Eloquent\Model;
 
-$data = collect([
+$data = new Collection([
     \App\Models\User::class,
     \App\Models\Game::class,
     \App\Models\Console::class,
@@ -137,7 +137,7 @@ Filter classes and/or objects that implement the given interface.
 ```php
 use App\Contracts\PlayableOnConsole;
 
-$data = collect([
+$data = new Collection([
     \App\Models\User::class,
     \App\Models\Game::class,
     \App\Models\Console::class,
@@ -154,7 +154,7 @@ Filter classes and/or objects that use the given trait.
 ```php
 use Illuminate\Notifications\Notifiable;
 
-$data = collect([
+$data = new Collection([
     \App\Models\User::class,
     \App\Models\Game::class,
     \App\Models\Console::class,
