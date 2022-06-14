@@ -29,28 +29,28 @@ The package registers itself automatically.
 Here's a brief documentation on the macros the package provides.
 
 - `Illuminate\Database\Eloquent\Builder`
-  - `selectKey`
-  - `whereLike` & `orWhereLike`
+  - [`selectKey`](#illuminatedatabaseeloquentbuilderselectkey)
+  - [`whereLike` & `orWhereLike`](#illuminatedatabaseeloquentbuilderwherelike--orwherelike)
 - `Illuminate\Database\Query\Builder`
-  - `selectRawArr`
+  - [`selectRawArr`](#illuminatedatabasequerybuilderselectrawarr)
 - `Illuminate\Support\Collection`
-  - `mergeMany`
-  - `pluckMany`
-  - `whereExtends`
-  - `whereImplements`
-  - `whereUses`
+  - [`mergeMany`](#illuminatesupportcollectionmergemany)
+  - [`pluckMany`](#illuminatesupportcollectionpluckmany)
+  - [`whereExtends`](#illuminatesupportcollectionwhereextends)
+  - [`whereImplements`](#illuminatesupportcollectionwhereimplements)
+  - [`whereUses`](#illuminatesupportcollectionwhereuses)
 - `Illuminate\Support\Arr`
-  - `combine`
-  - `join`
-  - `undot`
-  - `zip`
-  - `unzip`
+  - [`combine`](#illuminatesupportarrcombine)
+  - [`join`](#illuminatesupportarrjoin)
+  - [`undot`](#illuminatesupportarrundot)
+  - [`zip`](#illuminatesupportarrzip)
+  - [`unzip`](#illuminatesupportarrunzip)
 - `Illuminate\Support\Str`
-  - `wrap`
+  - [`wrap`](#illuminatesupportstrwrap)
 - `Illuminate\Support\Stringable`
-  - `wrap`
+  - [`wrap`](#illuminatesupportstringablewrap)
 - `Carbon\CarbonPeriod`
-  - `collect`
+  - [`collect`](#carboncarbonperiodcollect)
 
 ### `Illuminate\Database\Eloquent\Builder::selectKey`
 
