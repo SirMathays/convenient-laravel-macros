@@ -26,9 +26,7 @@ Install the package with Composer:
 
 Here's a brief documentation on the macros the package provides.
 
-### `Illuminate\Database\Eloquent\Builder`
-
-#### `selectKey`
+### `Illuminate\Database\Eloquent\Builder::selectKey`
 
 Select the key of the model in the query (uses Model's `getKey` method).
 
@@ -38,7 +36,7 @@ $query = User::query()->selectKey();
 $query->toSql() // "select `id` from `users`"
 ```
 
-#### `whereLike` & `orWhereLike`
+### `Illuminate\Database\Eloquent\Builder::whereLike` & `orWhereLike`
 
 ```php
 $query = User::query()
