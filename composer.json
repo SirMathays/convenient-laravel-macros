@@ -1,0 +1,46 @@
+{
+    "name": "sirmathays/convenient-laravel-macros",
+    "description": "Helpful macros for your Laravel project.",
+    "keywords": [
+        "laravel",
+        "macro"
+    ],
+    "homepage": "https://gitlab.com/sirmathays/convenient-laravel-macros",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Matti Suoraniemi",
+            "email": "matti@suoraniemi.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.4|^8.0",
+        "illuminate/support": "^8.0",
+        "sirmathays/convenient-laravel-helpers": "^2.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^6.0",
+        "phpunit/phpunit": "^9.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "SirMathays\\Convenience\\": "src"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "SirMathays\\Convenience\\MacroServiceProvider"
+            ]
+        }
+    }
+}
