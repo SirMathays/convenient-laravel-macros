@@ -203,7 +203,7 @@ Arr::zip(['foo' => 'bar', 'doo' => 'gar'], ':') // ["foo:bar", "doo:gar"]
 Unzips keys to key and value with the given zipper.
 
 ```php
-Arr::zip(['foo:bar', 'doo:gar'], ':') // ["foo" => "bar", "doo" => "gar"]
+Arr::unzip(['foo:bar', 'doo:gar'], ':') // ["foo" => "bar", "doo" => "gar"]
 ```
 
 ### `Illuminate\Support\Str::wrap`
