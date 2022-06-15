@@ -42,7 +42,6 @@ Here's a brief documentation on the macros the package provides.
 - `Illuminate\Support\Arr`
   - [`combine`](#illuminatesupportarrcombine)
   - [`join`](#illuminatesupportarrjoin)
-  - [`undot`](#illuminatesupportarrundot)
   - [`zip`](#illuminatesupportarrzip)
   - [`unzip`](#illuminatesupportarrunzip)
 - `Illuminate\Support\Str`
@@ -180,14 +179,6 @@ Collection's nice join method brought to Arr.
 
 ```php
 Arr::join(['foo', 'bar', 'zoo'], ', ', ' and ') // "foo, bar and zoo"
-```
-
-### `Illuminate\Support\Arr::undot`
-
-Undots the keys.
-
-```php
-Arr::undot(['foo.bar.zoo' => 123]) // ["foo" => ["bar" => ["zoo" => 123]]]
 ```
 
 ### `Illuminate\Support\Arr::zip`
