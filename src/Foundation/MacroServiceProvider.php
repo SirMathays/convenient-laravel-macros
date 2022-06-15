@@ -61,7 +61,7 @@ class MacroServiceProvider extends ServiceProvider
             collect($macros)
                 ->reject(
                     fn ($class, $macro) =>
-                    (static_method_exists($macroable, 'hasMacro') && $macroable::hasMacro($macro))
+                    static_method_exists($macroable, 'hasMacro') && $macroable::hasMacro($macro)
                 )
                 ->each(fn ($class, $macro) => $macroable::macro($macro, app($class)()));
         }
