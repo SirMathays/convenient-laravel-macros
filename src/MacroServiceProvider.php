@@ -31,7 +31,6 @@ class MacroServiceProvider extends ServiceProvider
         \Illuminate\Support\Arr::class => [
             'combine'               => Macros\Arr\CombineMacro::class,
             'join'                  => Macros\Arr\JoinMacro::class,
-            'undot'                 => Macros\Arr\UndotMacro::class,
             'unzip'                 => Macros\Arr\UnzipMacro::class,
             'zip'                   => Macros\Arr\ZipMacro::class,
         ],
