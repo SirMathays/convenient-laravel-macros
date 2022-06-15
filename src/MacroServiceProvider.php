@@ -2,10 +2,16 @@
 
 namespace SirMathays\Convenience;
 
+use Illuminate\Support\Arr;
 use SirMathays\Convenience\Foundation\MacroServiceProvider as ServiceProvider;
 
 class MacroServiceProvider extends ServiceProvider
 {
+    /**
+     * The macro mappings for the application.
+     *
+     * @var array
+     */
     protected static array $macros = [
         \Illuminate\Database\Eloquent\Builder::class => [
             'selectKey'             => Macros\Builder\SelectKeyMacro::class,
@@ -39,4 +45,21 @@ class MacroServiceProvider extends ServiceProvider
             'collect'               => Macros\CarbonPeriod\CollectMacro::class
         ]
     ];
+
+    /**
+     * Return the macros mappings array.
+     *
+     * @return array
+     */
+    public function getMacros(): array
+    {
+        $config = Arr::get($this->app, 'config.convenient_macros.disabled', []);
+        
+        return collect(parent::getMacros())
+            ->map(function ($classes) use ($config) {
+                return collect($classes)->reject(
+                    fn ($class) => in_array($class, $config)
+                );
+            })->toArray();
+    }
 }
