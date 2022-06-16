@@ -81,7 +81,7 @@ $query->toSql();
 
 ### `Illuminate\Database\Query\Builder::selectRawArr`
 
-Select attributes as raw queries instead of one ugly string (`selectRaw`).
+Add raw select statements as an array, instead of as a one ugly string (`selectRaw`).
 
 ```php
 $query = User::query()->selectRawArr([
@@ -90,6 +90,10 @@ $query = User::query()->selectRawArr([
 ]);
 
 $query->first()->toArray() // ["id_name" => "1-Matti", "email_name" => "matti@suoraniemi.com-Matti"]
+
+// VS
+
+$query = User::query()->selectRaw('concat(`id`, "-", `name`) as id_name, concat(`email`, "-", `name`) as email_name');
 ```
 
 ### `Illuminate\Support\Collection::mergeMany`
@@ -143,7 +147,7 @@ $data = new Collection([
     \App\Models\Hobby::class,
 ]);
 
-$data->whereImplements(PlayableOnConsole::class)->count(); // 1
+$data->whereImplements(PlayableOnConsole::class)->toArray(); // ["App\Models\Game"]
 ```
 
 ### `Illuminate\Support\Collection::whereUses`
@@ -169,8 +173,8 @@ Similar to `array_combine`, but allows to have more keys than values. Keys witho
 as null.
 
 ```php
-Arr::combine(['foo', 'bar'], [1337]) // ["foo" => 1337, "bar" => null]
-Arr::combine(['foo', 'bar'], [1337, 1993]) // ["foo" => 1337, "bar" => 1993]
+Arr::combine(['foo', 'zoo'], ["bar", "gar"]) // ["foo" => "bar", "zoo" => "gar"]
+Arr::combine(['foo', 'zoo'], ["bar"]) // ["foo" => "bar", "zoo" => null]
 ```
 
 ### `Illuminate\Support\Arr::join`
@@ -186,7 +190,7 @@ Arr::join(['foo', 'bar', 'zoo'], ', ', ' and ') // "foo, bar and zoo"
 Zips the key and value together with the given zipper.
 
 ```php
-Arr::zip(['foo' => 'bar', 'doo' => 'gar'], ':') // ["foo:bar", "doo:gar"]
+Arr::zip(['foo' => 'bar', 'zoo' => 'gar'], ':') // ["foo:bar", "zoo:gar"]
 ```
 
 ### `Illuminate\Support\Arr::unzip`
@@ -194,7 +198,7 @@ Arr::zip(['foo' => 'bar', 'doo' => 'gar'], ':') // ["foo:bar", "doo:gar"]
 Unzips keys to key and value with the given zipper.
 
 ```php
-Arr::unzip(['foo:bar', 'doo:gar'], ':') // ["foo" => "bar", "doo" => "gar"]
+Arr::unzip(['foo:bar', 'zoo:gar'], ':') // ["foo" => "bar", "zoo" => "gar"]
 ```
 
 ### `Illuminate\Support\Str::wrap`
@@ -223,6 +227,49 @@ Wraps the string with given character(s).
 $dates = CarbonPeriod::between('yesterday', 'today')->collect();
 
 $dates->first()->toDateTimeString() // "2022-06-14 00:00:00"
+```
+
+## Extending the MacroServiceProvider
+
+You can make your own pretty MacroServiceProviders by extending the MacroServiceProvider class
+provided by this package!
+
+Here's an example:
+
+```php
+<?php
+
+namespace App\Providers;
+
+use SirMathays\Convenience\Foundation\MacroServiceProvider as ServiceProvider;
+
+class MacroServiceProvider extends ServiceProvider
+{
+    protected static array $macros = [
+        \Illuminate\Support\Collection::class => [
+            \App\Macros\MyOwnCollectionMacro::class
+        ]
+    ];
+}
+```
+
+The macro class referenced in the example above would look something like:
+
+```php
+<?php
+
+namespace App\Macros;
+
+class MyOwnCollectionMacro
+{
+    public function __invoke(): \Closure
+    {
+        return function () {
+            // Something cool worth getting macroed happens here...
+            return $this;
+        }
+    }
+}
 ```
 
 ## License
