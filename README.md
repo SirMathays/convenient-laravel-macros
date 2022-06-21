@@ -41,6 +41,7 @@ Here's a brief documentation on the macros the package provides.
   - [`whereUses`](#illuminatesupportcollectionwhereuses)
 - `Illuminate\Support\Arr`
   - [`combine`](#illuminatesupportarrcombine)
+  - [`fillKeys`](#illuminatesupportarrfillkeys)
   - [`join`](#illuminatesupportarrjoin)
   - [`zip`](#illuminatesupportarrzip)
   - [`unzip`](#illuminatesupportarrunzip)
@@ -175,6 +176,20 @@ as null.
 ```php
 Arr::combine(['foo', 'zoo'], ["bar", "gar"]) // ["foo" => "bar", "zoo" => "gar"]
 Arr::combine(['foo', 'zoo'], ["bar"]) // ["foo" => "bar", "zoo" => null]
+```
+
+### `Illuminate\Support\Arr::fillKeys`
+
+Fills given keys with given value. You can also set that only keys that already exist in the array
+can become filled. In other words, if the key `foo` is to be filled with value `bar`, but the key
+`foo` doesn't already exist in the array, the array will remain unchanged.
+
+```php
+$array = ['foo' => 'bar', 'zoo' => 'gar'];
+
+Arr::fillKeys($array, ['foo', 'zoo'], null) // ["foo" => null, "zoo" => null]
+Arr::fillKeys($array, ['foo', 'zoo', 'boo'], null) // ["foo" => null, "zoo" => null, "boo" => null]
+Arr::fillKeys($array, ['foo', 'zoo', 'boo'], null, true) // ["foo" => null, "zoo" => null]
 ```
 
 ### `Illuminate\Support\Arr::join`
