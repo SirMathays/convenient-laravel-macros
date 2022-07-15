@@ -275,7 +275,7 @@ class MacroServiceProvider extends ServiceProvider
 {
     protected static array $macros = [
         \Illuminate\Support\Collection::class => [
-            \App\Macros\MyOwnCollectionMacro::class
+            'example' => \App\Macros\ExampleMacro::class
         ]
     ];
 }
@@ -288,7 +288,7 @@ The macro class referenced in the example above would look something like:
 
 namespace App\Macros;
 
-class MyOwnCollectionMacro
+class ExampleMacro
 {
     public function __invoke(): \Closure
     {
@@ -299,6 +299,39 @@ class MyOwnCollectionMacro
     }
 }
 ```
+
+### Commands
+
+You can use `make:macro <name>` to generate a macro file to help you with the structure. The command
+supports `--mixin` option (example: `--mixin=/Illuminate/Support/Collection`). This will add a PHP
+docblock above the macro class declaration with `@mixin` tag.
+
+The package also comes with `macro:generate` command. If you have a provider class setup that extends
+`SirMathays\Convenience\Foundation\MacroServiceProvider` class, the command will go through the
+defined macros and generate all missing macros. This way you can define multiple macros you know
+you will have and then create the classes in bulk, similar to Laravel's `event:generate`.
+
+For example:
+
+```php
+<?php
+
+namespace App\Providers;
+
+use SirMathays\Convenience\Foundation\MacroServiceProvider as ServiceProvider;
+
+class MacroServiceProvider extends ServiceProvider
+{
+    protected static array $macros = [
+        \Illuminate\Support\Collection::class => [
+            'example' => \App\Macros\ExampleMacro::class
+        ]
+    ];
+}
+```
+
+Assuming `ExampleMacro` doesn't exist yet, the command would then generate the macro class, automatically
+also filling in the `@mixin` tag.
 
 ## License
 
