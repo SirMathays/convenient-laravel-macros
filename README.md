@@ -307,9 +307,10 @@ supports `--mixin` option (example: `--mixin=/Illuminate/Support/Collection`). T
 docblock above the macro class declaration with `@mixin` tag.
 
 The package also comes with `macro:generate` command. If you have a provider class setup that extends
-`SirMathays\Convenience\Foundation\MacroServiceProvider` class, the command will go through the
-defined macros and generate all missing macros. This way you can define multiple macros you know
-you will have and then create the classes in bulk, similar to Laravel's `event:generate`.
+`SirMathays\Convenience\Foundation\MacroServiceProvider` class, the command will go through the macros
+defined in the provider and generate the ones that are missing. This way you can define multiple macros
+you know you will have and then generate them in bulk. It is very similar to Laravel's `event:generate`
+in its behavior.
 
 For example:
 
