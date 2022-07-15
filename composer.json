@@ -5,7 +5,7 @@
         "laravel",
         "macro"
     ],
-    "homepage": "https://gitlab.com/sirmathays/convenient-laravel-macros",
+    "homepage": "https://matti.suoraniemi.com/creations/packages/convenient-laravel-macros",
     "license": "MIT",
     "type": "library",
     "authors": [
