@@ -27,7 +27,7 @@ class SelectRawArrMacro
                 }
             }
 
-            return $this->selectRaw(implode(", ", $select), $bindings);
+            return $this->selectRaw(implode(', ', $select), $bindings);
         };
     }
 }

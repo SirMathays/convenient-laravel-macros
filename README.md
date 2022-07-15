@@ -168,6 +168,19 @@ $data = new Collection([
 $data->whereUses(Notifiable::class)->toArray(); // ["App\Models\User"]
 ```
 
+### `Illuminate\Support\Arr::associate`
+
+Converts an array into a fully associative array by converting any values with an integer key
+to the value being the key filled with the given fill value. Values that have a string key already
+won't be touched.
+
+```php
+Arr::associate(['foo']) // ["foo" => null]
+Arr::associate(['foo', 'bar' => []], []) // ["foo" => [], "bar" => []]
+Arr::associate(['foo', 'bar' => []], fn () => Arr::random(['foo', 'bar'])) // ["foo" => "foo", "bar" => []]
+Arr::associate([fn () => Str::reverse('foo'), 'bar' => []]) // ["oof" => null, "bar" => []]
+```
+
 ### `Illuminate\Support\Arr::combine`
 
 Similar to `array_combine`, but allows to have more keys than values. Keys without value will be set

@@ -9,6 +9,7 @@ use Illuminate\Support\Str;
 
 /**
  * @mixin \Illuminate\Database\Eloquent\Builder
+ *
  * @link https://freek.dev/1182-searching-models-using-a-where-like-query-in-laravel
  */
 class WhereLikeMacro
@@ -22,7 +23,7 @@ class WhereLikeMacro
                 'both' => fn ($search) => "%{$search}%",
             ];
 
-            $this->{!$or ? 'where' : 'orWhere'}(function (Builder $query) use ($attributes, $searchTerm, $pattern, $patterns) {
+            $this->{! $or ? 'where' : 'orWhere'}(function (Builder $query) use ($attributes, $searchTerm, $pattern, $patterns) {
                 foreach (Arr::wrap($attributes) as $attribute) {
                     $query->when(
                         is_string($attribute) && Str::contains($attribute, '.'),

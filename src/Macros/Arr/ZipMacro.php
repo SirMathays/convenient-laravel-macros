@@ -12,8 +12,8 @@ class ZipMacro
     public function __invoke(): Closure
     {
         return function (array $array, string $zipper = '.') {
-            if (!static::isAssoc($array)) {
-                throw new \Exception("Given array must be associative.");
+            if (! static::isAssoc($array)) {
+                throw new \Exception('Given array must be associative.');
             }
 
             foreach ($array as $key => &$value) {
