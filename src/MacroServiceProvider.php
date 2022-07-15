@@ -73,6 +73,13 @@ class MacroServiceProvider extends ServiceProvider
         ]);
 
         parent::boot();
+
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+                Commands\MacroMakeCommand::class,
+                Commands\MacroGenerateCommand::class,
+            ]);
+        }
     }
 
     /**
